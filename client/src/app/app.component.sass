@@ -1,0 +1,71 @@
+@import "src/global_var"
+header
+    width: 100%
+    background-color: $white
+    
+    .header_main
+        display: flex
+        justify-content: space-between
+        align-items: center 
+        padding: 15px 20px
+        color: $brown
+
+        .mobile_menu
+            display: none
+            background-color: $brown
+
+        @media only screen and (max-width: $tablet_breakpoint)
+                justify-content: space-around
+
+                .mobile_menu
+                    display: inherit
+                    
+
+        .main_section
+            display: flex
+            align-items: baseline
+
+            .cart
+                height: 40px 
+                width: 40px
+                margin-right: 30px
+                transition: $time
+
+                &:hover
+                    filter: brightness(1.2)
+
+            .user
+                height: 40px 
+                width: 40px
+                border: 1px solid black
+                border-radius: 50% 
+
+            @media only screen and (max-width: $tablet_breakpoint)
+                .user
+                    display: none
+
+                .cart
+                    margin: 0
+
+        search-bar
+            width: 50%
+
+    .header_nav
+        padding: 10px 15px
+        background-color: $brown
+
+        @media only screen and (max-width: $tablet_breakpoint)
+            display: none
+
+        .departments
+            display: flex
+            justify-content: space-evenly
+
+            li a
+                color: $white
+                transition: opacity $time
+
+                &:hover
+                    opacity: 0.8
+            
+    
