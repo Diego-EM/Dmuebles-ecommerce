@@ -1,6 +1,6 @@
 <header>
   <div class="header_main">
-    <button class="mobile_menu">
+    <button class="mobile_menu" #mobileMenu [hidden]="innerWidth > tabletBreakpoint">
       <img src="../assets/menu.svg" alt="Menu">
     </button>
     <h1>D'madera</h1>
@@ -25,6 +25,25 @@
     </ul>
   </nav>
 </header>
+<aside class="mobile_aside" *ngIf="menuActive && innerWidth <= tabletBreakpoint">
+  <div class="account">
+    <div class="user"></div>
+    <div class="account_option">
+      <a>Registrarme</a>
+      <a>Ingresar a mi cuenta</a>
+    </div>
+  </div>
+  <hr>
+  <ul class="departments">
+    <li><a href=""><div class="department_icon"><img src="../assets/sala_icon.svg"></div>Salas</a></li>
+    <li><a href=""><div class="department_icon"><img src="../assets/comedor_icon.svg"></div>Comedores</a></li>
+    <li><a href=""><div class="department_icon"><img src="../assets/recamara_icon.svg"></div>Recámaras</a></li>
+    <li><a href=""><div class="department_icon"><img src="../assets/cocina_icon.svg"></div>Cocinas</a></li>
+    <li><a href=""><div class="department_icon"><img src="../assets/deco_icon.svg"></div>Decoración</a></li>
+    <li><a href=""><div class="department_icon"><img src="../assets/varios_icon.svg"></div>Varios</a></li>
+    <li><a href=""><div class="department_icon"><img src="../assets/oferta_icon.svg"></div>Ofertas</a></li>
+  </ul>
+</aside>
 <router-outlet></router-outlet>
 <footer>
 </footer>
