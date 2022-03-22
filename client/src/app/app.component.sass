@@ -12,7 +12,8 @@ header
 
         .mobile_menu
             display: none
-            background-color: $brown
+            height: 35px
+            width: 35px
 
         @media only screen and (max-width: $tablet_breakpoint)
                 justify-content: space-around
@@ -37,7 +38,7 @@ header
             .user
                 height: 40px 
                 width: 40px
-                border: 1px solid black
+                border: 1px solid $brown
                 border-radius: 50% 
 
             @media only screen and (max-width: $tablet_breakpoint)
@@ -62,10 +63,16 @@ header
             justify-content: space-evenly
 
             li a
+                display: flex
                 color: $white
                 transition: opacity $time
 
                 &:hover
                     opacity: 0.8
+
+            .department_icon
+                height: 20px
+                width: 20px
+                margin-right: 5px
             
     
