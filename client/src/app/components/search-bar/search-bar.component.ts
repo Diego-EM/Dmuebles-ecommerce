@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, ElementRef } from '@angular/core';
+import { ProductsService } from 'src/app/services/products.service';
+import { SearchRes } from 'src/app/models';
 
 @Component({
   selector: 'search-bar',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() { }
+  userInput: string = "";
+  isFocused: boolean = false;
+  searchResults: SearchRes[] = [];
 
-  ngOnInit(): void {
+  @ViewChild('Input') Input!: ElementRef<HTMLInputElement>;
+
+  @HostListener('input', ['$event'])
+  onInput(event: any){
+    this.userInput = event.target.value;
+    if(this.userInput.length > 0){
+      this.getSearchResults(this.userInput);
+    }
   }
 
+  constructor(private search: ProductsService) { }
+
+  ngOnInit(): void { }
+
+  getSearchResults(req: string): void{
+    this.search.getSearchResults(req)
+      .subscribe((res: SearchRes[]) => {
+        this.searchResults = [];
+        for (let key in res){
+          this.searchResults.push(res[key]);
+        }
+      });
+  }
 }

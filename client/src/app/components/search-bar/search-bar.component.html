@@ -1,6 +1,14 @@
-<div class="input_field">
-    <input type="text" placeholder="¿Qué estas buscando?">
-    <button type="submit">
-        <img src="../../../assets/search.svg" alt="Buscar">
-    </button>
+<div class="searchbar">
+    <div class="input_field">
+        <input type="text" placeholder="¿Qué estas buscando?" (focus)="isFocused = true" (blur)="isFocused = false">
+        <button type="submit">
+            <img src="../../../assets/search.svg" alt="Buscar">
+        </button>
+    </div>
+    <div class="input_results" *ngIf="isFocused && userInput.length > 0">   
+        <a href="">{{userInput}}<div><img src="../../../assets/search.svg"></div></a>
+        <ng-container *ngFor="let result of searchResults; let i = index">
+            <a href="" *ngIf="i < 4">{{result.producto}}<div><img src="../../../assets/search.svg"></div></a>
+        </ng-container>
+    </div>
 </div>
