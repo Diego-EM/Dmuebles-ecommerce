@@ -17,7 +17,7 @@ export class BigCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.connect.getProduct(this.id)
-      .subscribe(data => this.productDetails = data);
+      .subscribe(product => this.productDetails = product);
   }
 
 }
