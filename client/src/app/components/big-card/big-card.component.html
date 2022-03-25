@@ -10,7 +10,7 @@
         <p class="details">{{productDetails?.descripcion}}<p>
         <div class="price" *ngIf="productDetails?.oferta; else Precio">
             <p class="normal">Precio normal: <span>{{ "$" + productDetails?.precio}}</span></p>
-            <p class="offer">{{"Precio Oferta: $" + (productDetails!.precio * productDetails!.oferta )}}</p>
+            <p class="offer">{{"Precio Oferta: $" + (productDetails!.precio * productDetails!.oferta ).toFixed(2)}}</p>
         </div>
         <ng-template class="price" #Precio>
             <p class="offer" *ngIf="productDetails?.precio">{{"Precio: $" + productDetails!.precio}}</p>
