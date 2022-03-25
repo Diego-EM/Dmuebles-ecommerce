@@ -1,0 +1,8 @@
+{
+    "connection" : {
+        "server" : "localhost",
+        "user" : "root",
+        "password" : "",
+        "database" : "ecommerce"
+    }
+}
