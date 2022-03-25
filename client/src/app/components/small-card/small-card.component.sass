@@ -1,0 +1,42 @@
+@import  "src/global_var"
+@import "../card_colors"
+.card
+    height: 350px
+    width: 300px
+    margin: 10px
+    border-radius: 5px
+    border: 1px solid $card_lightgray
+    overflow: hidden
+    transition: all 200ms
+
+    .figure
+        height: 60%
+        width: 100%
+        background-color: $card_lightgray
+        overflow: hidden
+
+        img
+            height: 100%
+
+    .description
+        padding: 10px 15px
+
+        .product
+            margin-bottom: 10px
+            font-size: 1.2em
+            color: $brown
+
+        .normal
+            margin-bottom: 5px
+            font-size: 0.9em
+            color: $card_darkgray
+            text-decoration-line: line-through
+            text-decoration-color: $card_darkgray
+
+        .offer
+            font-size: 1.1em
+            color: $card_red
+
+    &:hover
+        box-shadow: $drop_shadow
+        
