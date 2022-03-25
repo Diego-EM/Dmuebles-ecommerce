@@ -1,0 +1,108 @@
+@import  "src/global_var"
+.card
+    position: relative
+    display: flex
+    height: 420px
+    width: 80vw
+    max-width: 1020px
+    min-width: 650px
+    margin: 20px 25px 20px 0
+    background-color: #fcfcfc
+    border-radius: 5px
+    border: 1px solid #e7e7e7
+    transition: all 200ms
+
+    .figure
+        height: 100%
+        width: 50%
+        background-color: #e7e7e7
+        overflow: hidden
+
+        img
+            height: 100%
+            transition: transform 400ms
+
+        &:hover
+            img
+                transform: scale(1.05)
+
+    .description
+        display: flex
+        flex-direction: column
+        width: 50%
+        padding: 35px 20px
+
+        h2
+            font-size: 1.8em
+            font-weight: 400
+            color: $brown
+
+        hr
+            margin: 10px 0 20px 0
+            border-color: $brown
+
+        .details
+            margin-bottom: 10px 
+            color: $brown
+        
+        .price
+
+            p
+                margin: 8px 0
+
+            .normal
+                font-size: 1em
+                color: #7e7e7e
+            
+                span
+                    text-decoration-line: line-through
+                    text-decoration-color: #7e7e7e
+
+            .offer
+                font-size: 1.5em
+                font-weight: 500
+                color: #ff4026
+
+        .delivery
+            display: flex
+            align-items: center
+            align-self: flex-end
+            margin: 5px 0
+            font-size: 1.1em
+            color: $brown
+
+            span
+                margin-left: 5px
+                color: #ff4026
+
+            img
+                width: 45px
+                margin-left: 5px
+                transform: skewX(355deg)
+        
+        .anchor_product
+            position: absolute
+            bottom: 35px
+            display: flex
+            align-items: center
+            color: $brown
+            font-size: 1.2em
+
+            img
+                width: 20px
+                margin-left: 7px
+                opacity: 0.6
+                transition: all $time
+
+        &:hover
+            .anchor_product
+                img
+                    transform: translateX(5px)
+                    opacity: 1
+
+    &:hover
+        box-shadow: 0px 0px 12px 0px #adadad
+
+.card_reverse
+    flex-direction: row-reverse
+    margin: 20px 0 20px 25px

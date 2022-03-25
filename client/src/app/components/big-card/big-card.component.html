@@ -1,0 +1,19 @@
+<div class="card" [class.card_reverse]="reverse">
+    <a class="figure" href="">
+        <img [src]="productDetails?.img" [alt]="productDetails?.producto" [title]="productDetails?.producto">
+    </a>
+    <a class="description" href="">
+        <h2>{{productDetails?.producto}}</h2>
+        <hr>
+        <p class="details">{{productDetails?.descripcion}}<p>
+        <div class="price" *ngIf="productDetails!.oferta !== null; else Precio">
+            <p class="normal">Precio normal: <span>{{ "$" + productDetails?.precio}}</span></p>
+            <p class="offer">{{"Precio Oferta: $" + (productDetails!.precio * productDetails!.oferta )}}</p>
+        </div>
+        <ng-template class="price" #Precio>
+            <p class="offer">{{"Precio: $" + productDetails!.precio}}</p>
+        </ng-template>
+        <div class="delivery">Envío Express<span>GRATIS</span><img src="./assets/shipping.svg" alt="Envio gratis"></div>
+        <p href="" class="anchor_product">Ver detalles<img src="./assets/arrow.svg"></p>
+    </a>
+</div>
