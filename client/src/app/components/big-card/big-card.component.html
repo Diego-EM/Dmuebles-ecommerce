@@ -1,10 +1,10 @@
 <div class="card" [class.card_reverse]="reverse">
     <div class="figure">
-        <a href="">
+        <a [routerLink]="['/','product',productDetails?.id]">
             <img [src]="productDetails?.img" [alt]="productDetails?.producto" [title]="productDetails?.producto">
         </a>
     </div>
-    <a class="description" href="">
+    <a class="description" [routerLink]="['/','product',productDetails?.id]">
         <h2>{{productDetails?.producto}}</h2>
         <hr>
         <p class="details">{{productDetails?.descripcion}}<p>
@@ -16,6 +16,6 @@
             <p class="offer" *ngIf="productDetails?.precio">{{"Precio: $" + productDetails!.precio}}</p>
         </ng-template>
         <div class="delivery">Envío Express<span>GRATIS</span><img src="./assets/shipping.svg" alt="Envio gratis"></div>
-        <p href="" class="anchor_product">Ver detalles<img src="./assets/arrow.svg"></p>
+        <p class="anchor_product">Ver detalles<img src="./assets/arrow.svg"></p>
     </a>
 </div>

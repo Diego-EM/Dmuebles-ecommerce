@@ -22,6 +22,10 @@ export class SearchBarComponent implements OnInit {
       this.getSearchResults(this.userInput);
     }
   }
+  @HostListener('focusout', ['$event'])
+  onFocusOut(event: any){
+    setTimeout(() => this.isFocused = false, 90);
+  }
 
   constructor(private search: ProductsService) { }
 

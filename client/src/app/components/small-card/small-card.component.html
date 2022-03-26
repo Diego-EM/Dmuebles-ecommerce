@@ -1,11 +1,11 @@
 <div class="card">
     <div class="figure">
-        <a href="">
+        <a [routerLink]="['/','product',productDetails?.id]">
             <img [src]="productDetails?.img" [alt]="productDetails?.producto" [title]="productDetails?.producto">
         </a>
     </div>
-    <div href="" class="description">
-        <a href="">
+    <div class="description">
+        <a [routerLink]="['/','product',productDetails?.id]">
             <p class="product">{{productDetails?.producto}}</p>
             <div *ngIf="productDetails?.oferta; else Precio">
                 <p class="normal">{{"De: $" + productDetails!.precio}}</p>

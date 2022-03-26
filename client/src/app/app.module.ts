@@ -8,6 +8,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { HomeComponent } from './pages/home/home.component';
 import { BigCardComponent } from './components/big-card/big-card.component';
 import { SmallCardComponent } from './components/small-card/small-card.component';
+import { ProductViewComponent } from './pages/product-view/product-view.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SmallCardComponent } from './components/small-card/small-card.component
     SearchBarComponent,
     HomeComponent,
     BigCardComponent,
-    SmallCardComponent
+    SmallCardComponent,
+    ProductViewComponent
   ],
   imports: [
     BrowserModule,
