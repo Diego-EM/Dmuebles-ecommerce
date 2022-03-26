@@ -1,14 +1,14 @@
 <div class="searchbar">
     <div class="input_field">
-        <input type="text" placeholder="¿Qué estas buscando?" (focus)="isFocused = true">
+        <input type="text" placeholder="¿Qué estas buscando?" #searchBar>
         <button type="submit">
             <img src="../../../assets/search.svg" alt="Buscar">
         </button>
     </div>
     <div class="input_results" *ngIf="isFocused && userInput.length > 0">   
-        <a href="">{{userInput}}<div><img src="../../../assets/search.svg"></div></a>
+        <div class="option" (click)="optionSelected($event)">{{userInput}}<div><img src="../../../assets/search.svg"></div></div>
         <ng-container *ngFor="let result of searchResults; let i = index">
-            <a [routerLink]="['/','product',result?.id]" *ngIf="i < 4">{{result.producto}}<div><img src="../../../assets/search.svg"></div></a>
+            <div class="option" [routerLink]="['/','product',result?.id]" *ngIf="i < 4" (click)="optionSelected($event)">{{result.producto}}<div><img src="../../../assets/search.svg"></div></div>
         </ng-container>
     </div>
 </div>

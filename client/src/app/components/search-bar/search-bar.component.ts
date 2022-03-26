@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, ElementRef, Input } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { SearchRes } from 'src/app/models';
 
@@ -10,10 +10,10 @@ import { SearchRes } from 'src/app/models';
 export class SearchBarComponent implements OnInit {
 
   userInput: string = "";
-  isFocused: boolean = false;
   searchResults: SearchRes[] = [];
 
-  @ViewChild('Input') Input!: ElementRef<HTMLInputElement>;
+  @Input() isFocused: boolean = false;
+  @ViewChild('searchBar') searchBar!: ElementRef<HTMLInputElement>;
 
   @HostListener('input', ['$event'])
   onInput(event: any){
@@ -21,10 +21,6 @@ export class SearchBarComponent implements OnInit {
     if(this.userInput.length > 0){
       this.getSearchResults(this.userInput);
     }
-  }
-  @HostListener('focusout', ['$event'])
-  onFocusOut(event: any){
-    setTimeout(() => this.isFocused = false, 90);
   }
 
   constructor(private search: ProductsService) { }
@@ -39,5 +35,10 @@ export class SearchBarComponent implements OnInit {
           this.searchResults.push(res[key]);
         }
       });
+  }
+
+  optionSelected(e: any){
+    this.searchBar.nativeElement.value = e.target.textContent;
+    this.isFocused = false;
   }
 }

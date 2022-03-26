@@ -16,6 +16,7 @@ export class AppComponent {
   tabletBreakpoint: number = 780;
   phoneBreakpoint: number = 600;
   innerWidth: any;
+  searchFocused: boolean = false;
 
   @ViewChild('mobileMenu') mobileMenu!: ElementRef<HTMLButtonElement>;
 
@@ -23,8 +24,16 @@ export class AppComponent {
   onResize(event: any){
     this.innerWidth = event.target.innerWidth;
   }
+  @HostListener('click', ['$event'])
+  onClick(event: any){
+    const input = document.querySelector('#searchbar');
+    if (input!.contains(event.target)) this.searchFocused = true;
+    else this.searchFocused = false;
+  }
 
-  constructor(private render: Renderer2 ){}
+  constructor(
+    private render: Renderer2
+    ){}
 
   ngOnInit(): void{
     this.innerWidth = window.innerWidth;
