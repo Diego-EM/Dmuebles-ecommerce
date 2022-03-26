@@ -3,11 +3,17 @@
     <section class="popular">
         <h2>Populares</h2>
         <hr>
-        <div class="content">
+        <div class="content desktop">
             <big-card [id]="12"></big-card>
             <big-card [id]="24" [reverse]="true"></big-card>
             <big-card [id]="18"></big-card>
             <big-card [id]="8" [reverse]="true"></big-card>
+        </div>
+        <div class="content mobile">
+            <small-card [id]="12"></small-card>
+            <small-card [id]="24"></small-card>
+            <small-card [id]="18"></small-card>
+            <small-card [id]="8"></small-card>
         </div>
     </section>
     <section class="offer">
@@ -20,6 +26,43 @@
             <small-card [id]="18"></small-card>
         </div>
     </section>
-    <section class="deco"></section>
-    <section class="benefits"></section>
+    <section class="deco">
+        <h2>Dale personalidad a tu hogar</h2>
+        <hr>
+        <div class="content">
+            <small-card [id]="2"></small-card>
+            <small-card [id]="3"></small-card>
+            <small-card [id]="4"></small-card>
+            <small-card [id]="5"></small-card>
+            <small-card [id]="6"></small-card>
+            <small-card [id]="7"></small-card>
+        </div>
+    </section>
+    <hr>
+    <section class="benefits">
+        <h2>Beneficios</h2>
+        <div class="content">
+            <div class="benefit">
+                <figure>
+                    <img src="./assets/shipping.svg" alt="">
+                </figure>
+                <h3>Envío inmediato</h3>
+                <p>Todos tus productos cuentan con envío seguro, rápido y gratis en toda la República Mexicana.</p>
+            </div>
+            <div class="benefit">
+                <figure>
+                    <img src="" alt="">
+                </figure>
+                <h3>Flexibilidad de pago</h3>
+                <p>Aceptamos tarjetas de crédito y débito y depositos bancarios</p>
+            </div>
+            <div class="benefit">
+                <figure>
+                    <img src="" alt="">
+                </figure>
+                <h3>Garantía en nuestros productos</h3>
+                <p>D'muebles otorga garantía de 30 días naturales una vez entregados sus productos</p>
+            </div>
+        </div>
+    </section>
 </main>
