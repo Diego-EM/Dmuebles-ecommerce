@@ -27,6 +27,7 @@
             prod.descripcion,
             prod.precio,
             prod.oferta,
+            prod.stock,
             prov.nombre,
             cat.categoria
         FROM ((productos prod
