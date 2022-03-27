@@ -3,7 +3,7 @@
     <button class="mobile_menu" #mobileMenu [hidden]="innerWidth > tabletBreakpoint">
       <img src="../assets/menu.svg" alt="Menu">
     </button>
-    <h1>D'madera</h1>
+    <h1><a [routerLink]="'/'">D'muebles</a></h1>
     <search-bar [isFocused]="searchFocused" id="searchbar"></search-bar>
     <div class="main_section">
       <a href="" class="cart">
