@@ -10,6 +10,7 @@ main
         padding-top: 70px
 
     .productview
+        position: relative
         display: flex
         min-height: 70vh
         max-height: 80vh
@@ -113,6 +114,15 @@ main
 
                 &:hover
                     filter: saturate(1.2)
+        
+        .offer_label
+            position: absolute
+            top: 0
+            left: 0
+            padding: 10px 20px
+            background-color: $card_red
+            color: $white
+            font-size: 1.5em
 
         @media only screen and (max-width: $tablet_breakpoint)
             flex-direction: column
@@ -142,3 +152,25 @@ main
 
             .product_amount
                 justify-content: center
+
+            .offer_label
+                padding: 10px
+                font-size: 1em
+
+    .recomendations
+                display: flex
+                flex-direction: column
+                padding: 0 20px
+
+                h2
+                    font-size: 1.5em
+                    color: $brown
+
+                hr
+                    margin: 10px 0
+                    border-color: $brown
+
+                .content
+                    display: flex
+                    justify-content: center
+                    flex-wrap: wrap
