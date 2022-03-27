@@ -1,0 +1,36 @@
+<main *ngIf="currentProduct">
+    <div class="productview">
+        <figure>
+            <img [src]="currentProduct.img" [alt]="currentProduct.producto" [title]="currentProduct.producto">
+        </figure>
+        <div class="details">
+            <h1>{{currentProduct.producto}}</h1>
+            <p class="description">{{currentProduct.descripcion}}</p>
+            <div class="price">
+                <ng-container *ngIf="currentProduct.oferta !== null; else Price">
+                    <p class="normal">{{"Precio normal: $" + currentProduct.precio}}</p>
+                    <p class="offer">{{"Precio oferta: $" + (currentProduct.precio * currentProduct.oferta).toFixed(2)}}</p>
+                </ng-container>
+                <ng-template #Price>
+                    <p class="offer">{{"Precio: $" + currentProduct.precio}}</p>
+                </ng-template>
+            </div>
+            <div *ngIf="currentProduct.stock > 0; else noAvailable" class="product_amount">
+                    <label for="amount">Cantidad:</label>
+                    <input type="number" min="1" [max]="currentProduct.stock" value="1" name="amount" #productAmount>
+                    <p>{{currentProduct.stock + " piezas disponibles"}}</p>
+            </div>
+            <ng-template #noAvailable>
+                <div class="product_amount">
+                    <p class="avaliable">Producto sin stock</p>
+                </div>
+            </ng-template>
+            <div class="benefits">
+                <p><img src="/assets/shipping.svg">Envío express gratis</p>
+                <p>30 días de garantía una vez entregado tu producto</p>
+                <p>Muebles fabricados con materiales de excelente calidad</p>
+            </div>
+            <button class="shopping_button">Añadir al carrito</button>
+        </div>
+    </div>
+</main>
