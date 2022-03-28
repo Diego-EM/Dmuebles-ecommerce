@@ -34,8 +34,7 @@
         INNER JOIN proveedores prov ON prod.id_proveedor = prov.id)
         INNER JOIN categorias cat ON prod.id_categoria = cat.id) WHERE prod.id = $id;"; 
         $response = $connection->getData($query);
-        $imgRoute = "http://" . $_SERVER['SERVER_NAME'] . "/ecommerce/server/images/$id.jpg";
-        echo json_encode(array_merge($response[0], [ "img" => $imgRoute ]));
+        echo json_encode($response[0]);
     }
 
     //Get all products of one category
@@ -46,6 +45,13 @@
             $query = "SELECT id, producto, precio, oferta FROM productos WHERE id_categoria = $categoria";
         }
         $response = $connection->getData($query);
-        echo json_encode($response);
+
+        $productArray = new RecursiveArrayIterator($response);
+        $productList = [];
+        foreach($productArray as $key=>$value) 
+        {
+            array_push($productList, $value);
+        }
+        echo json_encode($productList);
     }
 ?>
