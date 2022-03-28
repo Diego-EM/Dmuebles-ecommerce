@@ -1,7 +1,7 @@
 <div class="card" *ngIf="productDetails">
     <div class="figure">
         <a [routerLink]="['/','product',productDetails?.id]">
-            <img [src]="productDetails?.img" [alt]="productDetails?.producto" [title]="productDetails?.producto">
+            <img [src]="productDetails?.imgProducto" [alt]="productDetails?.producto" [title]="productDetails?.producto">
         </a>
     </div>
     <div class="description">
@@ -9,7 +9,7 @@
             <p class="product">{{productDetails?.producto}}</p>
             <div *ngIf="productDetails?.oferta !== null; else Precio">
                 <p class="normal">{{"De: $" + productDetails!.precio}}</p>
-                <p class="offer">{{"A: $" + (productDetails!.oferta * productDetails!.precio).toFixed(2)}}</p>
+                <p class="offer">{{"A: $" + productDetails!.precioOferta}}</p>
             </div>
             <ng-template #Precio>
                 <div>

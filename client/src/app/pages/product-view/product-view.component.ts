@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Producto } from 'src/app/models';
 import { ProductsService } from 'src/app/services/products.service';
-import { Product } from 'src/app/models';
 
 @Component({
   selector: 'app-product-view',
@@ -10,7 +10,7 @@ import { Product } from 'src/app/models';
 })
 export class ProductViewComponent implements OnInit {
 
-  currentProduct!: Product;
+  currentProduct!: Producto;
   moreProducts: number[] = [];
 
   constructor(
@@ -23,7 +23,7 @@ export class ProductViewComponent implements OnInit {
       const id = params.get('id');
       if(id)
         this.connect.getProduct(id)
-          .subscribe((product: Product) => this.currentProduct = product);
+          .subscribe((product: Producto) => this.currentProduct = product);
     });
     this.refreshRecomendations();
   }

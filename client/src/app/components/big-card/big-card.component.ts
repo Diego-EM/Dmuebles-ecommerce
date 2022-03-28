@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from 'src/app/models';
+import { Producto } from 'src/app/models';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class BigCardComponent implements OnInit {
 
   @Input() id: string|number = 1;
   @Input() reverse: boolean = false;
-  productDetails?: Product;
+  productDetails?: Producto;
 
   constructor(private connect: ProductsService) { }
 

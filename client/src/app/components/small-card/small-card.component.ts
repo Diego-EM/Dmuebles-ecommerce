@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from 'src/app/models';
+import { Producto } from 'src/app/models';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class SmallCardComponent implements OnInit {
 
   @Input() id: number|string|undefined = undefined;
-  @Input() productDetails?: Product;
+  @Input() productDetails?: Producto;
 
   constructor(private connect: ProductsService) { }
 

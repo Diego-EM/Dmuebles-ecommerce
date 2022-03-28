@@ -1,7 +1,7 @@
 <main *ngIf="currentProduct">
     <section class="productview">
         <figure>
-            <img [src]="currentProduct.img" [alt]="currentProduct.producto" [title]="currentProduct.producto">
+            <img [src]="currentProduct.imgProducto" [alt]="currentProduct.producto" [title]="currentProduct.producto">
         </figure>
         <div class="details">
             <h1>{{currentProduct.producto}}</h1>
@@ -9,7 +9,7 @@
             <div class="price">
                 <ng-container *ngIf="currentProduct.oferta !== null; else Price">
                     <p class="normal">{{"Precio normal: $" + currentProduct.precio}}</p>
-                    <p class="offer">{{"Precio oferta: $" + (currentProduct.precio * currentProduct.oferta).toFixed(2)}}</p>
+                    <p class="offer">{{"Precio oferta: $" + currentProduct.precioOferta}}</p>
                 </ng-container>
                 <ng-template #Price>
                     <p class="offer">{{"Precio: $" + currentProduct.precio}}</p>

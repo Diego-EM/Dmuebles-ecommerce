@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/models';
+import { Producto } from 'src/app/models';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductListComponent implements OnInit {
 
   category: string|null = null;
-  productList?: Product[] = [];
+  productList?: Producto[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -21,11 +21,11 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const request = params.get('req');
+
       if (request && request.match(/^\d+$/)){
         this.category = request;
         this.connect.getProductsByCategory(request)
           .subscribe(products => {
-            console.log(products)
             this.productList = [];
             for (let i in products){
               this.productList?.push(products[i]);
