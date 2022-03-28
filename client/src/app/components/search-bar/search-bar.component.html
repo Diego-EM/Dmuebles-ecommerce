@@ -6,9 +6,13 @@
         </button>
     </div>
     <div class="input_results" *ngIf="isFocused && userInput.length > 0">   
-        <div class="option" (click)="optionSelected($event)">{{userInput}}<div><img src="../../../assets/search.svg"></div></div>
+        <div class="option" (click)="optionSelected($event)" [routerLink]="['/','search',userInput]">
+            {{userInput}}<div><img src="../../../assets/search.svg"></div>
+        </div>
         <ng-container *ngFor="let result of searchResults; let i = index">
-            <div class="option" [routerLink]="['/','product',result?.id]" *ngIf="i < 4" (click)="optionSelected($event)">{{result.producto}}<div><img src="../../../assets/search.svg"></div></div>
+            <div class="option" [routerLink]="['/','product',result?.id]" *ngIf="i < 4" (click)="optionSelected($event)">
+                {{result.producto}}<div><img src="../../../assets/search.svg"></div>
+            </div>
         </ng-container>
     </div>
 </div>

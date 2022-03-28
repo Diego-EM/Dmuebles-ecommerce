@@ -17,7 +17,7 @@ export class SearchBarComponent implements OnInit {
 
   @HostListener('input', ['$event'])
   onInput(event: any){
-    this.userInput = event.target.value;
+    this.userInput = event.target.value.trim();
     if(this.userInput.length > 0){
       this.getSearchResults(this.userInput);
     }
@@ -35,7 +35,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   optionSelected(e: any){
-    this.searchBar.nativeElement.value = e.target.textContent;
+    this.searchBar.nativeElement.value = e.target.textContent.trim();
     this.isFocused = false;
   }
 }
