@@ -1,0 +1,22 @@
+<main>
+    <section class="product_list" *ngIf="category; else Search">
+        <ng-container [ngSwitch]="category">
+            <h1 *ngSwitchCase="1">Salas</h1>
+            <h1 *ngSwitchCase="2">Comedores</h1>
+            <h1 *ngSwitchCase="3">Recámaras</h1>
+            <h1 *ngSwitchCase="4">Cocinas</h1>
+            <h1 *ngSwitchCase="5">Decoración</h1>
+            <h1 *ngSwitchCase="6">Varios</h1>
+            <h1 *ngSwitchDefault="">Ofertas</h1>
+        </ng-container>
+        <hr>
+        <div class="content" *ngIf="productList">
+            <small-card *ngFor="let product of productList" [productDetails]="product"></small-card>
+        </div>
+    </section>
+    <ng-template #Search>
+        <section class="product_list">
+            <h1>Resultados de </h1>
+        </section>
+    </ng-template>
+</main>
