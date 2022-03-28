@@ -41,7 +41,11 @@ export class AppComponent {
 
   ngAfterViewInit(): void{
     this.render.listen(this.mobileMenu.nativeElement,'click',() => {
-      this.menuActive = !this.menuActive;
+      this.switchMenu();
     })
+  }
+
+  switchMenu():void {
+    this.menuActive = !this.menuActive;
   }
 }

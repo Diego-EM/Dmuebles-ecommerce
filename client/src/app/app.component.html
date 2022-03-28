@@ -49,26 +49,26 @@
   </div>
   <hr>
   <ul class="departments">
-    <li>
-      <a [routerLink]="['/','search', 1]"><div class="department_icon"><img src="../assets/sala_icon.svg"></div>Salas</a>
+    <li [routerLink]="['/','search', 1]" (click)="switchMenu()">
+      <div class="department_icon"><img src="../assets/sala_icon.svg"></div>Salas
     </li>
-    <li>
-      <a [routerLink]="['/','search', 2]"><div class="department_icon"><img src="../assets/comedor_icon.svg"></div>Comedores</a>
+    <li [routerLink]="['/','search', 2]" (click)="switchMenu()">
+      <div class="department_icon"><img src="../assets/comedor_icon.svg"></div>Comedores
     </li>
-    <li>
-      <a [routerLink]="['/','search', 3]"><div class="department_icon"><img src="../assets/recamara_icon.svg"></div>Recámaras</a>
+    <li [routerLink]="['/','search', 3]" (click)="switchMenu()">
+      <div class="department_icon"><img src="../assets/recamara_icon.svg"></div>Recámaras
     </li>
-    <li>
-      <a [routerLink]="['/','search', 4]"><div class="department_icon"><img src="../assets/cocina_icon.svg"></div>Cocinas</a>
+    <li [routerLink]="['/','search', 4]" (click)="switchMenu()">
+      <div class="department_icon"><img src="../assets/cocina_icon.svg"></div>Cocinas
     </li>
-    <li>
-      <a [routerLink]="['/','search', 5]"><div class="department_icon"><img src="../assets/deco_icon.svg"></div>Decoración</a>
+    <li [routerLink]="['/','search', 5]" (click)="switchMenu()">
+      <div class="department_icon"><img src="../assets/deco_icon.svg"></div>Decoración
     </li>
-    <li>
-      <a [routerLink]="['/','search', 6]"><div class="department_icon"><img src="../assets/varios_icon.svg"></div>Varios</a>
+    <li [routerLink]="['/','search', 6]" (click)="switchMenu()">
+      <div class="department_icon"><img src="../assets/varios_icon.svg"></div>Varios
     </li>
-    <li>
-      <a [routerLink]="['/','search', 7]"><div class="department_icon"><img src="../assets/oferta_icon.svg"></div>Ofertas</a>
+    <li [routerLink]="['/','search', 7]" (click)="switchMenu()">
+      <div class="department_icon"><img src="../assets/oferta_icon.svg"></div>Ofertas
     </li>
   </ul>
 </aside>
