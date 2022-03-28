@@ -10,6 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductListComponent implements OnInit {
 
+  search: string = "";
   category: string|null = null;
   productList?: Producto[] = [];
 
@@ -30,6 +31,7 @@ export class ProductListComponent implements OnInit {
               this.productList = products;
             });
         } else {
+          this.search = request;
           this.connect.getSearchResults(request)
           .subscribe(products => {
             this.productList = products;

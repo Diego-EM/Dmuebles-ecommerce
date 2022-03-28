@@ -10,7 +10,7 @@
             <h1 *ngSwitchDefault="">Ofertas</h1>
         </ng-container>
         <ng-template #Search>
-                <h1>Resultados de </h1>
+                <h1>Resultados de <span>{{ search }}</span></h1>
         </ng-template>
         <hr>
         <div class="content" *ngIf="productList">
