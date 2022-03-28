@@ -13,9 +13,22 @@
 
     // Get search results
     if (isset($search)){
-        $query = "SELECT id, producto FROM productos WHERE producto LIKE '$search%' LIMIT 30";
-        $response = json_encode($connection->getData($query));
-        echo $response;
+        $query = "SELECT
+            id,
+            producto,
+            precio,
+            oferta
+        FROM productos WHERE producto LIKE '$search%'"; 
+
+        $response = $connection->getData($query);
+        
+        $searchArray = new RecursiveArrayIterator($response);
+        $searchList = [];
+        foreach($searchArray as $key=>$value) 
+        {
+            array_push($searchList, $value);
+        }
+        echo json_encode($searchList);
     }
 
     // Get product by id

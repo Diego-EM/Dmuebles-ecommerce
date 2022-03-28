@@ -22,17 +22,19 @@ export class ProductListComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const request = params.get('req');
 
-      if (request && request.match(/^\d+$/)){
-        this.category = request;
-        this.connect.getProductsByCategory(request)
+      if (request){
+        if (request.match(/^\d+$/)){
+          this.category = request;
+          this.connect.getProductsByCategory(request)
+            .subscribe(products => {
+              this.productList = products;
+            });
+        } else {
+          this.connect.getSearchResults(request)
           .subscribe(products => {
-            this.productList = [];
-            for (let i in products){
-              this.productList?.push(products[i]);
-            }
+            this.productList = products;
           });
-      } else {
-        console.log('This is a search');
+        }
       }
     })
   }

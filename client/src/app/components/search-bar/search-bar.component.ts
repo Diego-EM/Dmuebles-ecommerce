@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, HostListener, ElementRef, Input } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
-import { SearchRes } from 'src/app/models';
+import { Producto } from 'src/app/models';
 
 @Component({
   selector: 'search-bar',
@@ -10,7 +10,7 @@ import { SearchRes } from 'src/app/models';
 export class SearchBarComponent implements OnInit {
 
   userInput: string = "";
-  searchResults: SearchRes[] = [];
+  searchResults: Producto[] = [];
 
   @Input() isFocused: boolean = false;
   @ViewChild('searchBar') searchBar!: ElementRef<HTMLInputElement>;
@@ -29,11 +29,8 @@ export class SearchBarComponent implements OnInit {
 
   getSearchResults(req: string): void{
     this.search.getSearchResults(req)
-      .subscribe((res: SearchRes[]) => {
-        this.searchResults = [];
-        for (let key in res){
-          this.searchResults.push(res[key]);
-        }
+      .subscribe((res: Producto[]) => {
+        this.searchResults = res;
       });
   }
 
