@@ -52,14 +52,15 @@
 
     //Get all products of one category
     if(isset($categoria)){
-        if($categoria >= 7){
-            $query = "SELECT id, producto, precio, oferta FROM productos WHERE oferta IS NOT NULL";
-        } else {
-            $query = "SELECT id, producto, precio, oferta FROM productos WHERE id_categoria = :categoria";
-        }
-
         try{
-            $response = $connection->getData($query,':categoria',$categoria);
+            if($categoria >= 7){
+                $query = "SELECT id, producto, precio, oferta FROM productos WHERE oferta IS NOT NULL";
+                $response = $connection->getData($query);
+                
+            } else {
+                $query = "SELECT id, producto, precio, oferta FROM productos WHERE id_categoria = :categoria";
+                $response = $connection->getData($query,':categoria',$categoria);
+            }
 
             $productArray = new RecursiveArrayIterator($response);
             $productList = [];
@@ -72,7 +73,7 @@
         catch(Exception $e){
             echo json_encode([
                 'status'=>'error',
-                'response'=>'Oops, an error has ocurred: Category is out of range'
+                'response'=>'Oops, an error has ocurred: ' . $e
             ]);
         }
     }

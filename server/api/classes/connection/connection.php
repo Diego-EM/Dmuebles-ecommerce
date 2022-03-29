@@ -34,11 +34,12 @@
 
         public function getData(
             string $query,
-            string $bind,
-            string $value
+            string $bind = null,
+            string $value = null
             ){
             $req = $this->connection->prepare($query);
-            $req->bindValue($bind, $value);
+            if(isset($bind) && isset($value))
+                $req->bindValue($bind, $value);
             $req->execute();
             $res = $req->setFetchMode(PDO::FETCH_ASSOC);
             return new RecursiveArrayIterator($req->fetchAll());
