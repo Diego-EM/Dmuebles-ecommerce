@@ -6,9 +6,11 @@
     <h1><a [routerLink]="'/'">D'muebles</a></h1>
     <search-bar [isFocused]="searchFocused" id="searchbar"></search-bar>
     <div class="main_section">
-      <a href="" class="cart">
+      <a class="cart" [routerLink]="['/','car']">
         <img src="../assets/cart.svg" alt="Carrito">
-        <div class="cart_count" [class.mini]="cartCount > 9" *ngIf="cartCount > 0">{{(cartCount > 99) ? "+" : cartCount}}</div>
+        <div class="cart_count" *ngIf="cartCount > 0" [class.mini]="cartCount > 9 && cartCount < 100">
+          {{(cartCount > 99) ? "+" : cartCount}}
+        </div>
       </a>
       <button class="user"></button>
     </div>
