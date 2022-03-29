@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/models';
+import { CartManagerService } from 'src/app/services/cart-manager.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -10,12 +11,30 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductViewComponent implements OnInit {
 
-  currentProduct!: Producto;
+  currentProduct: Producto;
   moreProducts: number[] = [];
+
+  @ViewChild('addToCar') addToCar: ElementRef<HTMLButtonElement>;
+  @ViewChild('productQuantity') productQuantity: ElementRef<HTMLInputElement>;
+
+
+  @HostListener('click',['$event'])
+  onClick(event: any){
+    if(this.addToCar.nativeElement.contains(event.target)){
+      const quantity = parseInt(this.productQuantity.nativeElement.value);
+      if (quantity > 0 && quantity <= this.currentProduct.stock){
+        this.cart.addToCar(this.currentProduct,quantity);
+      } else {
+        this.cart.addToCar(this.currentProduct,this.currentProduct.stock);
+        this.productQuantity.nativeElement.value = this.currentProduct.stock.toString();
+      }
+    }
+  }
 
   constructor(
     private route: ActivatedRoute,
-    private connect: ProductsService
+    private connect: ProductsService,
+    private cart: CartManagerService
     ) { }
 
   ngOnInit(): void {
@@ -25,18 +44,15 @@ export class ProductViewComponent implements OnInit {
         this.connect.getProduct(id)
           .subscribe((product: Producto) => this.currentProduct = product);
     });
-    this.refreshRecomendations();
+    this.refreshPage();
   }
 
-  getRandomNumber(): number{
-    let random = Math.ceil(Math.random() * 24);
-    return random;
-  }
-
-  refreshRecomendations(): void{
+  refreshPage(): void{
+    if(this.productQuantity) this.productQuantity.nativeElement.value = '1';
     this.moreProducts = [];
     for (let i = 0; i < 4; i++){
-      this.moreProducts.push(this.getRandomNumber());
+      let random = Math.ceil(Math.random() * 35);
+      this.moreProducts.push(random);
     }
   }
 

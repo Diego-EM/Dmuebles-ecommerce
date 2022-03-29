@@ -17,7 +17,7 @@
             </div>
             <div *ngIf="currentProduct.stock > 0; else noAvailable" class="product_amount">
                     <label for="amount">Cantidad:</label>
-                    <input type="number" min="1" [max]="currentProduct.stock" value="1" name="amount" #productAmount>
+                    <input type="number" min="1" [max]="currentProduct.stock" value="1" name="amount" #productQuantity>
                     <p>{{currentProduct.stock + " piezas disponibles"}}</p>
             </div>
             <ng-template #noAvailable>
@@ -30,7 +30,7 @@
                 <p>30 días de garantía una vez entregado tu producto</p>
                 <p>Muebles fabricados con materiales de excelente calidad</p>
             </div>
-            <button class="shopping_button">Añadir al carrito</button>
+            <button class="shopping_button" #addToCar>Añadir al carrito</button>
         </div>
         <div class="offer_label" *ngIf="currentProduct.oferta">{{-currentProduct.oferta * 100 + "% de descuento"}}</div>
     </section>
@@ -38,7 +38,7 @@
         <h2>Más productos</h2>
         <hr>
         <div class="content">
-            <small-card *ngFor="let index of moreProducts" [id]="index" (click)="scrollToTop(); refreshRecomendations()"></small-card>
+            <small-card *ngFor="let index of moreProducts" [id]="index" (click)="scrollToTop(); refreshPage()"></small-card>
         </div>
     </section>
 </main>
