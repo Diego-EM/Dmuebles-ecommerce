@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ProdInCar, Producto } from '../models';
 
 @Injectable({
@@ -8,21 +9,24 @@ export class CartManagerService {
 
   constructor() { }
 
-  productInCar: ProdInCar[] = [];
+  productList = new BehaviorSubject<ProdInCar[]>([]);
+  productList$ = this.productList.asObservable();
 
   addToCar(product: Producto, quantity: number): void{
-    let index = this.productInCar.findIndex(item => item.producto.id === product.id);
+    let products = this.productList.value;
+    let index = products.findIndex(item => item.producto.id === product.id);
     if (index !== -1){
-      this.productInCar[index] = new ProdInCar(product, quantity);
+      products[index] = new ProdInCar(product, quantity);
     } else {
-      this.productInCar.push(new ProdInCar(product, quantity));
+      products.push(new ProdInCar(product, quantity));
     }
+    this.productList.next(products);
   }
 
   removeFromCar(id: string|number): void{
   }
 
   countProducts(): number{
-    return this.productInCar.length;
+    return this.productList.value.length;
   }
 }
