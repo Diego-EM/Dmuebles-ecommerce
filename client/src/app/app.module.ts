@@ -10,6 +10,7 @@ import { BigCardComponent } from './components/big-card/big-card.component';
 import { SmallCardComponent } from './components/small-card/small-card.component';
 import { ProductViewComponent } from './pages/product-view/product-view.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
+import { CartOverviewComponent } from './pages/cart-overview/cart-overview.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
     BigCardComponent,
     SmallCardComponent,
     ProductViewComponent,
-    ProductListComponent
+    ProductListComponent,
+    CartOverviewComponent
   ],
   imports: [
     BrowserModule,
