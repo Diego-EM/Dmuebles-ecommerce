@@ -5,6 +5,7 @@ import {
   ElementRef,
   HostListener
 } from '@angular/core';
+import { CartManagerService } from './services/cart-manager.service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
   phoneBreakpoint: number = 600;
   innerWidth: any;
   searchFocused: boolean = false;
+  cartCount: number = 0;
 
   @ViewChild('mobileMenu') mobileMenu!: ElementRef<HTMLButtonElement>;
 
@@ -32,17 +34,28 @@ export class AppComponent {
   }
 
   constructor(
-    private render: Renderer2
+    private render: Renderer2,
+    private cart: CartManagerService
     ){}
 
   ngOnInit(): void{
     this.innerWidth = window.innerWidth;
+    this.updateCart();
   }
 
   ngAfterViewInit(): void{
     this.render.listen(this.mobileMenu.nativeElement,'click',() => {
       this.switchMenu();
     })
+  }
+
+  updateCart(): void{
+    this.cart.productList$.subscribe(items => {
+      this.cartCount = 0;
+      items.forEach( item =>{
+        this.cartCount += item.cantidad;
+      });
+    });
   }
 
   switchMenu():void {

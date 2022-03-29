@@ -8,7 +8,7 @@
     <div class="main_section">
       <a href="" class="cart">
         <img src="../assets/cart.svg" alt="Carrito">
-        <div class="cart_count">1</div>
+        <div class="cart_count" [class.mini]="cartCount > 9" *ngIf="cartCount > 0">{{(cartCount > 99) ? "+" : cartCount}}</div>
       </a>
       <button class="user"></button>
     </div>
