@@ -18,9 +18,9 @@
             producto,
             precio,
             oferta
-        FROM productos WHERE producto LIKE '$search%'"; 
+        FROM productos WHERE producto LIKE ':search%'"; 
 
-        $response = $connection->getData($query);
+        $response = $connection->getData($query,':search',$search);
         
         $searchArray = new RecursiveArrayIterator($response);
         $searchList = [];
@@ -45,8 +45,8 @@
             cat.categoria
         FROM ((productos prod
         INNER JOIN proveedores prov ON prod.id_proveedor = prov.id)
-        INNER JOIN categorias cat ON prod.id_categoria = cat.id) WHERE prod.id = $id;"; 
-        $response = $connection->getData($query);
+        INNER JOIN categorias cat ON prod.id_categoria = cat.id) WHERE prod.id = :id;"; 
+        $response = $connection->getData($query,':id',$id);
         echo json_encode($response[0]);
     }
 
@@ -55,16 +55,25 @@
         if($categoria >= 7){
             $query = "SELECT id, producto, precio, oferta FROM productos WHERE oferta IS NOT NULL";
         } else {
-            $query = "SELECT id, producto, precio, oferta FROM productos WHERE id_categoria = $categoria";
+            $query = "SELECT id, producto, precio, oferta FROM productos WHERE id_categoria = :categoria";
         }
-        $response = $connection->getData($query);
 
-        $productArray = new RecursiveArrayIterator($response);
-        $productList = [];
-        foreach($productArray as $key=>$value) 
-        {
-            array_push($productList, $value);
+        try{
+            $response = $connection->getData($query,':categoria',$categoria);
+
+            $productArray = new RecursiveArrayIterator($response);
+            $productList = [];
+            foreach($productArray as $key=>$value) 
+            {
+                array_push($productList, $value);
+            }
+            echo json_encode($productList);
         }
-        echo json_encode($productList);
+        catch(Exception $e){
+            echo json_encode([
+                'status'=>'error',
+                'response'=>'Oops, an error has ocurred: Category is out of range'
+            ]);
+        }
     }
 ?>

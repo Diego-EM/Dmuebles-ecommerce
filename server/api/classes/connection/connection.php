@@ -1,10 +1,10 @@
 <?php
     class Connection {
-        private $server;
-        private $user;
-        private $password;
-        private $database;
-        private $connection;
+        private string $server;
+        private string $user;
+        private string $password;
+        private string $database;
+        private PDO $connection;
 
         function __construct(){
             $data = $this->getConnectionData();
@@ -32,8 +32,13 @@
             return json_decode($data);
         }
 
-        public function getData($query){
+        public function getData(
+            string $query,
+            string $bind,
+            string $value
+            ){
             $req = $this->connection->prepare($query);
+            $req->bindValue($bind, $value);
             $req->execute();
             $res = $req->setFetchMode(PDO::FETCH_ASSOC);
             return new RecursiveArrayIterator($req->fetchAll());
