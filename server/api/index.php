@@ -18,9 +18,9 @@
             producto,
             precio,
             oferta
-        FROM productos WHERE producto LIKE ':search%'"; 
+        FROM productos WHERE producto LIKE :search"; 
 
-        $response = $connection->getData($query,':search',$search);
+        $response = $connection->getData($query,':search',$search . "%");
         
         $searchArray = new RecursiveArrayIterator($response);
         $searchList = [];
