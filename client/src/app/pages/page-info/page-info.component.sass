@@ -1,0 +1,67 @@
+@import "src/global_var"
+main
+    padding-top: 111px
+    min-height: 100vh
+    color: $brown
+
+    @media only screen and (max-width: $tablet_breakpoint)
+        padding-top: 70px
+
+    h1
+        margin: 20px 10px
+        color: $card_red
+        font-size: 6em
+        text-align: center
+
+    hr
+        margin: 10px 0
+        border: 1px solid $brown
+
+    section
+        margin: 20px 10px
+        padding: 5px 15px
+
+        p
+            margin: 10px 5px 
+            font-size: 1.1em
+
+        a
+            color: $card_red
+
+    #first_message, #last_message
+        margin: 10px 20px
+        color: $card_red
+        font-size: 1.2em
+        text-align: center
+
+    #last_message
+        margin: 25px 20px
+
+    .technologies, .frontend, .backend
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        align-items: center
+
+        .frontend, .backend
+            flex-direction: column
+
+            span
+                margin: 5px 0
+                color: $card_red
+                font-size: 1.2em
+
+            div
+                display: flex
+                flex-wrap: wrap
+                justify-content: center
+                align-items: center
+                min-height: 150px
+                margin: 0 10px
+                border: 2px solid $card_red
+                border-radius: 2px
+            
+                img
+                    width: 120px
+                    margin: 0 20px
+        
