@@ -23,10 +23,9 @@ export class CartManagerService {
     this.productList.next(products);
   }
 
-  removeFromCar(id: string|number): void{
-  }
-
-  countProducts(): number{
-    return this.productList.value.length;
+  removeItem(id: string|number): void{
+    let products = this.productList.value;
+    let newList = products.filter(item => item.producto.id !== id);
+    this.productList.next(newList);
   }
 }
