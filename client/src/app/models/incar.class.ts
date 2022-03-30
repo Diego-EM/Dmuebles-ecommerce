@@ -6,7 +6,8 @@ export class ProdInCar{
         public cantidad: number
     ){}
 
-    get total(): number{
-        return (this.producto.precioOferta) ? (parseFloat(this.producto.precioOferta) * this.cantidad) : (this.producto.precio * this.cantidad);
+    get total(): string{
+        let total = (this.producto.precioOferta) ? (parseFloat(this.producto.precioOferta) * this.cantidad) : (this.producto.precio * this.cantidad);
+        return total.toFixed(2);
     }
 }
