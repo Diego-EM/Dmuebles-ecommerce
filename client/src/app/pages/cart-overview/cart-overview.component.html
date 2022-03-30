@@ -1,1 +1,37 @@
-<p>cart-overview works!</p>
+<main *ngIf="items.length > 0; else noItems">
+    <table class="item_list">
+        <thead class="list_header">
+            <tr>
+                <th></th>
+                <th class="product_column">Producto</th>
+                <th>Descripción</th>
+                <th>Cant.</th>
+                <th>Prec. Unitario</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td (click)="removeItem(item.producto.id)" class="remove_item">X</td>
+                <td class="product_column"><img [src]="item.producto.imgProducto" [alt]="item.producto.producto"></td>
+                <td><a [routerLink]="['/','product',item.producto.id]">{{item.producto.producto}}</a></td>
+                <td>{{item.cantidad}}</td>
+                <td>{{"$" + item.producto.precioOferta}}</td>
+                <td>{{"$" + item.total}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="total">Total</td>
+                <td colspan="4" class="total_mobile">Total</td>
+                <td class="amount">{{"$" + total.toFixed(2)}}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <button class="buy_car">Comprar carrito</button>
+</main>
+<ng-template #noItems>
+    <main>
+        <p class="main_message">Aun no tienes productos en tu carrito :(</p>
+    </main>
+</ng-template>

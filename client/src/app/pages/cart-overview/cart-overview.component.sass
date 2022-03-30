@@ -1,0 +1,86 @@
+@import "src/global_var"
+main
+    display: flex
+    flex-direction: column
+    align-items: center
+    min-height: 100vh
+    width: 100vw
+    padding-top: 111px
+    
+    @media only screen and (max-width: $tablet_breakpoint)
+        padding-top: 70px
+
+    .item_list
+        width: 95vw
+        margin: 15px 0
+        background-color: $white
+
+        @media only screen and (max-width: $phone_breakpoint)
+            font-size: 0.9em
+
+            .product_column
+                display: none
+
+        .list_header
+            background-color: $card_darkgray
+            color: $white
+            
+            th
+                padding: 5px 10px
+                
+
+        img
+            width: 150px
+
+        td
+            text-align: center
+
+        .remove_item
+            color: $card_darkgray
+
+            &:hover
+                color: $card_red
+                cursor: pointer
+
+        tfoot
+            background-color: $card_lightgray
+
+            .total, .total_mobile
+                padding-right: 10px
+                color: $card_red
+                text-align: right
+                font-weight: 600
+
+            .total_mobile
+                display: none
+
+            .amount
+                color: $card_red
+                text-align: center
+                font-weight: 600
+
+            @media only screen and (max-width: $phone_breakpoint)
+                .total
+                    display: none
+
+                .total_mobile
+                    display: revert
+
+    .buy_car
+        align-self: flex-end
+        margin: 10px 25px
+        padding: 10px 15px
+        background-color: $card_red
+        color: $white
+        font-size: 1em
+        border-radius: 2px
+        transition: filter $time
+
+        &:hover
+            filter: saturate(1.3)
+
+    .main_message
+        margin: 50px 15px
+        font-size: 1.5em
+        color: $card_red
+        text-align: center

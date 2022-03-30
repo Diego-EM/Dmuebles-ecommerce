@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProdInCar } from 'src/app/models';
+import { CartManagerService } from 'src/app/services/cart-manager.service';
 
 @Component({
   selector: 'app-cart-overview',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartOverviewComponent implements OnInit {
 
-  constructor() { }
+  items: ProdInCar[] = [];
+  total: number = 0;
+
+  constructor(private cart: CartManagerService) { }
 
   ngOnInit(): void {
+    this.cart.productList$.subscribe(items => {
+      this.total = 0;
+      this.items = items;
+      items.forEach(item => {
+        this.total += parseFloat(item.total);
+      })
+    });
   }
 
+  removeItem(id: number|string): void{
+    this.cart.removeItem(id);
+  }
 }
