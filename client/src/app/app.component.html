@@ -76,4 +76,19 @@
 </aside>
 <router-outlet></router-outlet>
 <footer>
+  <ul class="more_options">
+    <li><a [routerLink]="['/','about']">Quiénes somos</a></li>
+    <li><a [routerLink]="['/','about']">Sucursales</a></li>
+    <li><a [routerLink]="['/','about']">Contacto</a></li>
+    <li><a [routerLink]="['/','about']">Preguntas frecuentes</a></li>
+  </ul>
+  <div class="social_media">
+    <a [routerLink]="['/','about']"><img src="./assets/facebook.svg" alt="GitHub"></a>
+    <a [routerLink]="['/','about']"><img src="./assets/twitter.svg" alt="GitHub"></a>
+    <a [routerLink]="['/','about']"><img src="./assets/github.svg" alt="GitHub"></a>
+  </div>
+  <div class="info">
+    <p>{{"- D'muebles " + currentYear}}</p>
+    <p>Creado con 🤍 por Diego EM</p>
+  </div>
 </footer>

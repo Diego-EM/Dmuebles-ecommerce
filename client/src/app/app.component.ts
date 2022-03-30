@@ -19,6 +19,7 @@ export class AppComponent {
   innerWidth: any;
   searchFocused: boolean = false;
   cartCount: number = 0;
+  currentYear = new Date().getFullYear();
 
   @ViewChild('mobileMenu') mobileMenu!: ElementRef<HTMLButtonElement>;
 
