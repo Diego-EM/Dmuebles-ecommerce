@@ -51,6 +51,9 @@
   </div>
   <hr>
   <ul class="departments">
+    <li [routerLink]="['/']" (click)="switchMenu()">
+      <div class="department_icon"><img src="../assets/home.svg"></div>Inicio
+    </li>
     <li [routerLink]="['/','search', 1]" (click)="switchMenu()">
       <div class="department_icon"><img src="../assets/sala_icon.svg"></div>Salas
     </li>
