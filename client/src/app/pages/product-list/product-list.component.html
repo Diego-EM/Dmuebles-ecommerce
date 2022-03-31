@@ -1,5 +1,5 @@
 <main>
-    <section class="product_list">
+    <section class="product_list" *ngIf="productList!.length; else noResults">
         <ng-container [ngSwitch]="category" *ngIf="category; else Search">
             <h1 *ngSwitchCase="1">Salas</h1>
             <h1 *ngSwitchCase="2">Comedores</h1>
@@ -17,4 +17,11 @@
             <small-card *ngFor="let product of productList" [productDetails]="product"></small-card>
         </div>
     </section>
+    <ng-template #noResults>
+        <section class="product_list">
+            <h1>Resultados de <span>{{ search }}</span></h1>
+            <hr>
+            <h1>No se hayaron resultados :(</h1>
+        </section>
+    </ng-template>
 </main>

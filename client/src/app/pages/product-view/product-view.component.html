@@ -1,4 +1,4 @@
-<main *ngIf="currentProduct">
+<main *ngIf="currentProduct; else notFound">
     <section class="productview">
         <figure>
             <img [src]="currentProduct.imgProducto" [alt]="currentProduct.producto" [title]="currentProduct.producto">
@@ -42,3 +42,8 @@
         </div>
     </section>
 </main>
+<ng-template #notFound>
+    <main>
+        <h1>El producto que esta buscando no existe</h1>
+    </main>
+</ng-template>
