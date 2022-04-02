@@ -15,6 +15,7 @@ export class CartOverviewComponent implements OnInit {
   constructor(private cart: CartManagerService) { }
 
   ngOnInit(): void {
+    window.scroll(0,0);
     this.cart.productList$.subscribe(items => {
       this.total = 0;
       this.items = items;

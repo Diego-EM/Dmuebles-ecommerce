@@ -12,10 +12,28 @@ main
         padding: 30px
 
     .banner
+        display: flex
+        justify-content: center
+        align-items: center
         height: 70vh
         width: 100vw
         padding: 0
-        background-color: #adaf
+        overflow: hidden
+        background-image: url('http://localhost/ecommerce/server/images/banner.jpg')
+        background-position: center
+        background-attachment: fixed
+        background-size: cover
+
+        h1
+            padding: 0 14px
+            margin-bottom: 60px
+            text-align: center
+            color: $brown
+            border-bottom: 2px solid $brown
+            font-size: 3em
+
+            @media only screen and (max-width: $phone_breakpoint)
+                font-size: 2em
 
     .popular
         .content

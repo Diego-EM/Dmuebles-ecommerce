@@ -38,6 +38,7 @@ export class ProductViewComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    window.scroll(0,0);
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if(id)
