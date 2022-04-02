@@ -15,16 +15,19 @@ header
 
         h1
             a
+                display: flex
+                align-items: end
                 color: $brown
+
+            .logo
+                margin-right: 10px
+                width: 50px
 
         .mobile_menu
             height: 35px
             width: 35px
 
         @media only screen and (max-width: $tablet_breakpoint)
-            justify-content: space-around
-                    
-        @media only screen and (max-width: $phone_breakpoint)
             justify-content: space-between
 
             h1 
